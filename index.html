@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/global.css">
+    <link rel="stylesheet" href="src/styles/habit.css">
+</head>
+<body>
+    <header class="container-header">
+        <div class="container-div-header" id="container-logo-image">
+            <img src="./src/assets/logoH.png" alt="logo" id="logo-image">
+        </div>
+    </header>
+    <section class="container-creation-habit">
+        <form class="creation-habit">
+            <div class="creation-div">
+                <p>Get started! name the habit you wish to start and how frequently it will be repeated</p>
+            </div>
+            <div class="creation-div">
+                <label for="habit-namer" class="creation-title">Habit</label>
+                <input type="text" id="habit-namer" class="creation-receiver"
+                placeholder="Habit name" aria-placeholder="Habit name">
+                <label for="habit-frequencer" class="creation-title">Frequency</label>
+                <input type="number" id="habit-frequencer" class="creation-receiver"
+                placeholder="To repeat everyday insert 1" aria-placeholder="To repeat everyday insert 1">
+            </div>
+            <button id="habit-creator" class="creator-button">Create</button>
+        </form>
+    </section>
+    <main class="container-created-habits">
+        <div id="container-habits">
+            <div class="container-habits-title">
+                <h1>Habits</h1>
+            </div>
+        </div>
+        <div id="container-history">
+            <div class="container-habits-title">
+                <h1 class="history-title">Activity Log</h1>
+            </div>
+            <div class="history-log">
+            </div>
+        </div>
+        <div id="container-complete-history">
+            <button id="drop-button">Show History</button>
+            <div class="container-monthly-log" id="history-month-container">
+            </div>
+        </div>
+    </main>
+    <footer class="container-footer">
+        <div class="container-div-footer">
+            <div class="container-contact-links">
+                <a class="contact-links" href="https://github.com/FernandoArtur" target="_blank"><img src="./src/assets/GitLogo.png" alt="Github" class="contact-link-image"></a>
+            </div>
+            <div class="container-contact-links">
+                <a class="contact-links" href="https://www.linkedin.com/in/fernandonepomuceno/" target="_blank"><img src="./src/assets/LinkedInLogo.png" alt="LinkedIn" class="contact-link-image"></a>
+            </div>
+            <div class="container-contact-links">
+                <a class="contact-links" href="https://www.behance.net/fernandnepomuc2" target="_blank"><img src="./src/assets/BehanceLogo.png" alt="Behance" class="contact-link-image"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="src/scripts/habits.js"></script>
+</body>
+</html>

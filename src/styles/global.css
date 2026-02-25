@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* general element styles */
+
+body { 
+    font-family: Lato;
+}
+
+/* global classes */
+
+.primary-button {
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #0192eb;
+    color: white;
+    transition: ease-in-out 0.3s;
+    width: 4rem;
+    height: 2rem;
+}
+
+.primary-button:hover {
+    background-color: #00588f;
+}
+
+.secondary-button {
+    border: solid 1px #00588f;
+    border-radius: 0.2rem;
+    color: #00588f;
+    background-color: #f5f9fb;
+    transition: ease-in-out 0.3s;
+    width: 4rem;
+    height: 2rem;
+}
+
+.secondary-button:hover {
+    background-color: #ffffff;
+    border: solid 1px #0192eb;
+    color: #0192eb;
+}
+
+/* header styles */
+
+.container-header {
+    display: flex;
+    background-color: #151515;
+    justify-content: center;
+    border-bottom: 1px solid white;
+}
+
+.container-div-header {
+    display: flex;
+    width: 85%;
+    align-items: start;
+    max-width: 1152px;
+    height: 5rem;
+}
+
+#logo-image {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: 460px) {
+    .container-div-header {
+        width: 90%;
+        justify-content: center;
+    }
+    #container-logo-image {
+        width: 100%;
+    }
+}
+
+/* footer style */
+
+.container-footer {
+    display: flex;
+    background-color: #151515;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding: 2rem 0rem;
+}
+
+.container-div-footer {
+    display: flex;
+    width: 85%;
+    justify-content: center;
+    gap: 10rem;
+    height: 5rem;
+}
+
+.container-contact-links {
+    display: flex;
+    height: 5rem;
+    align-items: center;
+}
+
+.contact-links {
+    font-size: 10px;
+    font-weight: thin;
+    color: white;
+    width: 50px;
+    height: 50px;
+}
+
+.contact-link-image {
+    width: 50px;
+    height: 50px;
+    transition: ease-in-out 0.3s;
+}
+
+.contact-link-image:hover {
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: 600px) {
+    .container-div-footer {
+        gap: 4rem;
+        width: 90%;
+    }
+}
+
