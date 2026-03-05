@@ -73,15 +73,14 @@ class Habit {
     });
 
     // called function on load
-    
   }
 
   habitReset(target) {
-    if(target.myCheck === false){
+    if (target.myCheck === false) {
       return;
     }
     const frequencyDate = comparingDate(target);
-    if(frequencyDate >= target.myFrequency){
+    if (frequencyDate >= target.myFrequency) {
       target.myCheck = false;
       target.habitStatus.checked = false;
       target.habitCheckAuto(target);
@@ -95,7 +94,7 @@ class Habit {
       target.myDay = currentTime.getDate();
       const currentDay = formatTime(target.myDay);
       target.myMonth = currentTime.getMonth();
-      const currentMonth = formatTime(target.myMonth + 1);
+      const currentMonth = formatMonth(target.myMonth);
       target.myYear = currentTime.getFullYear();
       const currentYear = target.myYear;
       target.myHour = currentTime.getHours();
@@ -390,7 +389,7 @@ let calendarTracker = {
   myYear: 0,
   myMonth: 0,
   myDay: 0,
-}
+};
 let showCounter = false;
 
 const containerHabits = document.querySelector("#container-habits");
@@ -412,7 +411,7 @@ habitCreator.addEventListener("click", (event) => {
 });
 
 showHistoryButton.addEventListener("click", () => {
-  if(showCounter === false){
+  if (showCounter === false) {
     historyMonthContainer.style.display = "flex";
     showHistoryButton.textContent = "Hide History";
     showCounter = !showCounter;
@@ -424,7 +423,6 @@ showHistoryButton.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
   let previousList =
     JSON.parse(localStorage.getItem("recordedHabitData")) || [];
   let previousCounter =
@@ -433,8 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let previousCalendar =
     JSON.parse(localStorage.getItem("recordedCalendar")) || {};
 
-  let previousLog =
-    JSON.parse(localStorage.getItem("recordedLog")) || [];
+  let previousLog = JSON.parse(localStorage.getItem("recordedLog")) || [];
   let previousHistory =
     JSON.parse(localStorage.getItem("recordedHistory")) || [];
 
@@ -443,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   listHabits = previousList;
   idCounter = previousCounter;
-  
+
   calendarTracker = previousCalendar;
 
   myCalendarUpdate();
@@ -483,7 +480,7 @@ function myLoadingHistory() {
   for (let i = 0; i < availableHistory.length; i++) {
     historyCreation(i, availableHistory);
   }
-};
+}
 
 const recordingData = () => {
   localStorage.setItem("recordedHabitData", JSON.stringify(listHabits));
@@ -494,8 +491,8 @@ const recordingData = () => {
 
 function addingLog(target) {
   const indexTarget = target.myId;
-  for(let iT = 0;iT < listLogs.length;iT++){
-    if(indexTarget === listLogs[iT].myId){
+  for (let iT = 0; iT < listLogs.length; iT++) {
+    if (indexTarget === listLogs[iT].myId) {
       return;
     }
   }
@@ -512,12 +509,12 @@ function addingLog(target) {
   };
   listLogs.push(logableElement);
   recordingLog();
-};
+}
 
 function deductingLog(target) {
   const indexTarget = target.myId;
-  for(let iT = 0;iT < listLogs.length;iT++){
-    if(indexTarget === listLogs[iT].myId){
+  for (let iT = 0; iT < listLogs.length; iT++) {
+    if (indexTarget === listLogs[iT].myId) {
       listLogs.splice(iT, 1);
       recordingLog();
       return;
@@ -530,7 +527,7 @@ function addingHistory() {
     return;
   }
   const copyLogs = listLogs;
-  if(listHistory.length === 31){
+  if (listHistory.length === 31) {
     listHistory.pop();
     listHistory.unshift(copyLogs);
     recordingHistory();
@@ -549,7 +546,7 @@ function recordingLog() {
   // testing without localStorage.setItem("recordedHistory", JSON.stringify(listHistory));
 }
 
-function recordingHistory(){
+function recordingHistory() {
   localStorage.setItem("recordedHistory", JSON.stringify(listHistory));
 }
 
@@ -561,9 +558,9 @@ function recordingCalendar() {
 
 function myCalendarUpdate() {
   const calendarDifference = comparingDate(calendarTracker);
-  if(calendarDifference === 0){
+  if (calendarDifference === 0) {
     return;
-  };
+  }
   const currentCalendar = new Date();
   calendarTracker.myYear = currentCalendar.getFullYear();
   calendarTracker.myMonth = currentCalendar.getMonth();
@@ -580,6 +577,13 @@ const decimalVerifier = (number) => {
 const formatTime = (timeComponent) => {
   if (timeComponent < 10) {
     return `0${timeComponent}`;
+  }
+  return `${timeComponent}`;
+};
+
+const formatMonth = (timeComponent) => {
+  if (timeComponent < 10) {
+    return `0${timeComponent + 1}`;
   }
   return `${timeComponent}`;
 };
@@ -684,7 +688,10 @@ const createHabit = () => {
 // history script
 
 function historyCreation(target, historyList) {
+
   const containerDay = document.createElement("div");
+  const tempMyMonth = formatMonth(historyList[target][0].myMonth);
+  
   containerDay.id = `containerDay_${historyList[target][0].myDay}
     /${historyList[target][0].myMonth}/${historyList[target][0].myYear}`;
   containerDay.className = "container-log-data";
@@ -701,7 +708,7 @@ function historyCreation(target, historyList) {
   const myCurrentDay = document.createElement("h2");
   myCurrentDay.id = `myCurrentDay_${historyList[target][0].myDay}
             /${historyList[target][0].myMonth}/${historyList[target][0].myYear}`;
-  myCurrentDay.textContent = `${convertedDay}/${convertedMonth}/${
+  myCurrentDay.textContent = `${convertedDay}/${tempMyMonth}/${
     historyList[target][0].myYear
   }`;
 
@@ -736,7 +743,3 @@ function converterNumbers(target) {
   }
   return target;
 }
-
-
-
-
